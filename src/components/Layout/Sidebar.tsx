@@ -1,9 +1,13 @@
+"use client";
+
 import React from "react";
 import styles from "./Sidebar.module.css";
+import ThemeToggle from "@/components/common/ThemeToggle";
 
 const Sidebar: React.FC = () => {
   return (
     <div className={styles.sidebar}>
+      <ThemeToggle />
       <h2>Navigation</h2>
       <ul className={styles.navList}>
         <li>
