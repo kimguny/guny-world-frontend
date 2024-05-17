@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import styles from "./index.module.css";
 
 const ThemeToggle: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -27,7 +28,7 @@ const ThemeToggle: React.FC = () => {
   }, [darkMode]);
 
   return (
-    <button onClick={() => setDarkMode(!darkMode)} className="p-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded">
+    <button onClick={() => setDarkMode(!darkMode)} className={`${styles.button} ${darkMode ? styles.buttonDark : styles.buttonLight}`}>
       Toggle Dark Mode
     </button>
   );
