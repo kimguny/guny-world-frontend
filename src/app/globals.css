@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-body {
+body,
+#sidebar {
   @apply bg-white text-black;
   font-family: "SkyBori", sans-serif;
   transition: background-color 0.3s, color 0.3s;
