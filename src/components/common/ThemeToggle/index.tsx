@@ -29,7 +29,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <button onClick={() => setDarkMode(!darkMode)} className={`${styles.button} ${darkMode ? styles.buttonDark : styles.buttonLight}`}>
-      Toggle Dark Mode
+      Dark Mode
     </button>
   );
 };
