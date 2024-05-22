@@ -57,17 +57,17 @@ const LoginForm: React.FC = () => {
             />
           </div>
           <div className="mb-4 flex items-center justify-between">
-            <div>
+            <div className="flex">
               <input type="checkbox" id="remember" className="mr-2" />
               <label htmlFor="remember" className="text-sm text-gray-600">
                 기억하기
               </label>
             </div>
-            <a href="#" className="text-sm text-indigo-600 hover:underline">
+            <a href="#" className="text-sm text-yellow-600 hover:underline">
               회원가입
             </a>
           </div>
-          <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-200">
+          <button type="submit" className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition duration-200">
             로그인
           </button>
         </form>
