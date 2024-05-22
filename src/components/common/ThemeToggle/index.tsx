@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
 const ThemeToggle: React.FC = () => {
@@ -28,8 +30,12 @@ const ThemeToggle: React.FC = () => {
   }, [darkMode]);
 
   return (
-    <button onClick={() => setDarkMode(!darkMode)} className={`${styles.button} ${darkMode ? styles.buttonDark : styles.buttonLight}`}>
-      Dark Mode
+    <button
+      onClick={() => setDarkMode(!darkMode)}
+      className={`${styles.button} ${darkMode ? styles.buttonDark : styles.buttonLight}`}
+      aria-label="Toggle Dark Mode"
+    >
+      <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
     </button>
   );
 };
