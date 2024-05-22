@@ -14,7 +14,7 @@ export const DarkModeProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const savedMode = getCookie("darkMode");
-    if (savedMode === "true") {
+    if (savedMode === true) {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
     } else {
