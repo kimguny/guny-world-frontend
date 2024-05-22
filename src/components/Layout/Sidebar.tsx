@@ -2,19 +2,18 @@
 
 import React from "react";
 import styles from "./Sidebar.module.css";
-import ThemeToggle from "@/components/common/ThemeToggle";
+import DarkToggle from "@/components/common/DarkToggle";
+import Link from "next/link";
 
 const Sidebar: React.FC = () => {
   return (
     <div id="sidebar" className={styles.sidebar}>
-      <ThemeToggle />
-      <h2>Navigation</h2>
+      <DarkToggle />
       <ul className={styles.navList}>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/main">Main</a>
+        <li className={styles.navItem}>
+          <Link href="/save/main" className={styles.navLink}>
+            Main
+          </Link>
         </li>
       </ul>
     </div>

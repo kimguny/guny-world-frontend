@@ -9,21 +9,23 @@
   font-style: normal;
 }
 
-body,
-#sidebar {
-  @apply bg-white text-black;
+body {
+  @apply transition-colors duration-300;
   font-family: "SkyBori", sans-serif;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar {
-  @apply bg-gray-100;
+#sidebar {
+  @apply transition-colors duration-300;
 }
 
-.dark body {
-  @apply bg-gray-700 text-white;
+@layer base {
+  body {
+    @apply bg-white text-black dark:bg-gray-700 dark:text-white;
+  }
 }
 
-.dark #sidebar {
-  @apply bg-gray-900 text-white;
+@layer components {
+  #sidebar {
+    @apply bg-gray-100 dark:bg-gray-900 dark:text-white;
+  }
 }
