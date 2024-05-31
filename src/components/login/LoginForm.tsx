@@ -19,7 +19,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (isSuccess && cookies.token) {
-      router.push("/");
+      router.push("/save/main");
     }
   }, [isSuccess, cookies.token, router]);
 

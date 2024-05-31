@@ -1,10 +1,5 @@
-export interface APIResponse<T> {
-  content?: T;
-  message: string;
-}
-
-export interface LoginContent {
-  user_id: string;
+export interface APIResponse {
   accessToken: string;
   refreshToken: string;
+  message: string;
 }
