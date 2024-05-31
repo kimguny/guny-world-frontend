@@ -1,20 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import useLoginMutation from "@/hooks/mutation/useLoginMutation";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/navigation";
 
-const LoginForm: React.FC = () => {
-  const [username, setUsername] = useState("");
+export default function LoginForm() {
+  const [user_id, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const { mutate: postLogin, isSuccess } = useLoginMutation();
   const [cookies, setCookie, removeCookie] = useCookies();
   const router = useRouter();
 
-  const onLogin = (e: React.FormEvent) => {
+  const onLogin = (e: FormEvent) => {
     e.preventDefault();
     removeCookie("token");
-    postLogin({ username, password });
+    postLogin({ user_id, password });
   };
 
   useEffect(() => {
@@ -37,8 +37,8 @@ const LoginForm: React.FC = () => {
               id="username"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
               placeholder="아이디를 입력하세요"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={user_id}
+              onChange={(e) => setUserId(e.target.value)}
               required
             />
           </div>
@@ -74,6 +74,4 @@ const LoginForm: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default LoginForm;
+}
