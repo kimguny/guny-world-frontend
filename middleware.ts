@@ -2,9 +2,18 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
   const token = req.cookies.get("token");
 
-  if (!token && req.nextUrl.pathname !== "/login") {
+  console.log(`Pathname: ${pathname}, Token: ${token}`);
+
+  const publicRoutes = ["/login", "/register", "/about"];
+
+  if (publicRoutes.includes(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (!token) {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
@@ -14,5 +23,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: "/((?!api|_next|static|favicon.ico).*)",
+  matcher: ["/:path*"],
 };
