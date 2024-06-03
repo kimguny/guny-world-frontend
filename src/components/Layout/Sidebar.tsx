@@ -16,6 +16,11 @@ const Sidebar: React.FC = () => {
           </Link>
         </li>
         <li className={styles.navItem}>
+          <Link href="/save/chzzk" className={styles.navLink}>
+            Chzzk
+          </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/404" className={styles.navLink}>
             404
           </Link>
