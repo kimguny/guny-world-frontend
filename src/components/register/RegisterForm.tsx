@@ -3,6 +3,7 @@ import React, { useState, useEffect, FormEvent } from "react";
 import useRegisterMutation from "@/hooks/mutation/useRegisterMutation";
 
 export default function RegisterForm() {
+  const [nickname, setNickname] = useState("");
   const [user_id, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,8 +22,8 @@ export default function RegisterForm() {
 
   useEffect(() => {
     setIsPasswordMatch(password === confirmPassword);
-    setIsFormValid(user_id !== "" && password !== "" && confirmPassword !== "" && password === confirmPassword);
-  }, [user_id, password, confirmPassword]);
+    setIsFormValid(nickname !== "" && user_id !== "" && password !== "" && confirmPassword !== "" && password === confirmPassword);
+  }, [nickname, user_id, password, confirmPassword]);
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -30,12 +31,26 @@ export default function RegisterForm() {
         <h2 className="text-2xl font-bold mb-6 text-center">회원가입</h2>
         <form onSubmit={onRegister}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="nickname" className="block text-gray-700 font-medium mb-2">
+              닉네임
+            </label>
+            <input
+              type="nickname"
+              id="nickname"
+              className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring focus:ring-indigo-200"
+              placeholder="닉네임은 최대 8자리 입니다"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="user_id" className="block text-gray-700 font-medium mb-2">
               아이디(이메일)
             </label>
             <input
               type="email"
-              id="username"
+              id="user_id"
               className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring focus:ring-indigo-200"
               placeholder="이메일을 입력하세요"
               value={user_id}

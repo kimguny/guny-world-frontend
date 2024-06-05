@@ -19,7 +19,11 @@
   overflow: hidden;
 }
 
-.navItem::before {
+.navItem:hover {
+  background-color: #f9f9f9;
+}
+
+/* .navItem::before {
   content: "";
   position: absolute;
   top: 0;
@@ -33,7 +37,7 @@
 
 .navItem:hover::before {
   left: 0;
-}
+} */
 
 /* navLink */
 .navLink {

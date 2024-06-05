@@ -6,8 +6,15 @@ import DarkToggle from "@/components/common/DarkToggle";
 import Link from "next/link";
 
 export default function Sidebar() {
+  const user = {
+    nickname: "사용자닉네임",
+  };
+
   return (
     <div id="sidebar" className={styles.sidebar}>
+      <div className="flex flex-col items-center mb-4">
+        <span className="text-lg font-semibold mt-2">{user.nickname}</span>
+      </div>
       <DarkToggle />
       <ul className={styles.navList}>
         <li className={styles.navItem}>
