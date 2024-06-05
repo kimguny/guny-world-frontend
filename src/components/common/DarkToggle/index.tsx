@@ -5,7 +5,7 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useDarkMode } from "@/context/DarkModeContext";
 import styles from "./index.module.css";
 
-const DarkToggle: React.FC = () => {
+export default function DarkToggle() {
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
@@ -13,6 +13,4 @@ const DarkToggle: React.FC = () => {
       <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
     </button>
   );
-};
-
-export default DarkToggle;
+}

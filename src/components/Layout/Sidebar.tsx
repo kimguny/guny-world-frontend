@@ -5,7 +5,7 @@ import styles from "./Sidebar.module.css";
 import DarkToggle from "@/components/common/DarkToggle";
 import Link from "next/link";
 
-const Sidebar: React.FC = () => {
+export default function Sidebar() {
   return (
     <div id="sidebar" className={styles.sidebar}>
       <DarkToggle />
@@ -28,6 +28,4 @@ const Sidebar: React.FC = () => {
       </ul>
     </div>
   );
-};
-
-export default Sidebar;
+}
