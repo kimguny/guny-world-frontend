@@ -24,18 +24,18 @@ export default function LoginForm() {
   }, [isSuccess, cookies.token, router]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="bg-white p-8 rounded-lg w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>
         <form onSubmit={onLogin}>
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 font-medium mb-2">
-              아이디
+              아이디(이메일)
             </label>
             <input
               type="text"
               id="username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring focus:ring-indigo-200"
               placeholder="아이디를 입력하세요"
               value={user_id}
               onChange={(e) => setUserId(e.target.value)}
@@ -49,7 +49,7 @@ export default function LoginForm() {
             <input
               type="password"
               id="password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+              className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring focus:ring-indigo-200"
               placeholder="비밀번호를 입력하세요"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -57,17 +57,11 @@ export default function LoginForm() {
             />
           </div>
           <div className="mb-4 flex items-center justify-between">
-            <div className="flex">
-              <input type="checkbox" id="remember" className="mr-2" />
-              <label htmlFor="remember" className="text-sm text-gray-600">
-                기억하기
-              </label>
-            </div>
-            <a href="/register" className="text-sm text-yellow-600 hover:underline">
-              회원가입
+            <a href="/register" className="text-base text-yellow-500 hover:underline">
+              회원가입 바로가기
             </a>
           </div>
-          <button type="submit" className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition duration-200">
+          <button type="submit" className="w-full bg-yellow-400 text-black py-2 rounded-3xl hover:bg-yellow-600 transition duration-200">
             로그인
           </button>
         </form>

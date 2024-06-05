@@ -10,10 +10,10 @@ const apiClient = axios.create({
 
 // 요청 인터셉터: 토큰을 헤더에 추가
 apiClient.interceptors.request.use((config) => {
-  const accessToken = getCookie("token");
+  const accessToken = getCookie("accessToken");
 
   if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    config.headers.Authorization = accessToken;
   }
 
   return config;
@@ -29,7 +29,7 @@ apiClient.interceptors.response.use(
       // 401 오류 발생 시 로그인 페이지로 리디렉션
       alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
       window.location.href = "/login";
-      removeCookie("token");
+      removeCookie("accessToken");
       removeCookie("refreshToken");
       localStorage.removeItem("userInfo");
     } else {

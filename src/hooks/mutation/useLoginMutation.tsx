@@ -10,7 +10,7 @@ export default function useLoginMutation() {
   const mutate = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      setCookies("token", data.accessToken.replace("Bearer ", ""), {
+      setCookies("accessToken", data.accessToken, {
         path: "/",
       });
     },
