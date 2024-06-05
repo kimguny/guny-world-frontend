@@ -3,9 +3,9 @@ import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const token = req.cookies.get("token");
+  const accessToken = req.cookies.get("accessToken");
 
-  console.log(`Pathname: ${pathname}, Token: ${token}`);
+  console.log(`Pathname: ${pathname}, Token: ${accessToken}`);
 
   const publicRoutes = ["/login", "/register"];
 
@@ -14,7 +14,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!token) {
+  if (!accessToken) {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     console.log("Redirecting to /login");

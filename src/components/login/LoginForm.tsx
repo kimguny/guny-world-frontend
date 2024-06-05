@@ -13,15 +13,15 @@ export default function LoginForm() {
 
   const onLogin = (e: FormEvent) => {
     e.preventDefault();
-    removeCookie("token");
+    removeCookie("accessToken");
     postLogin({ user_id, password });
   };
 
   useEffect(() => {
-    if (isSuccess && cookies.token) {
+    if (isSuccess && cookies.accessToken) {
       router.push("/save/main");
     }
-  }, [isSuccess, cookies.token, router]);
+  }, [isSuccess, cookies.accessToken, router]);
 
   return (
     <div className="flex items-center justify-center min-h-screen">
