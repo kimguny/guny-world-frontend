@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect, FormEvent } from "react";
 import useRegisterMutation from "@/hooks/mutation/useRegisterMutation";
-import styles from "./RegisterForm.module.css";
+import React, { useState, useEffect, FormEvent } from "react";
 import Lanyard from "@/components/common/Lanyard";
+import styles from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
   const [nickname, setNickname] = useState("");
@@ -19,12 +19,18 @@ export default function RegisterForm() {
       alert("Passwords do not match");
       return;
     }
-    postRegister({ user_id, password });
+    postRegister({ user_id, password, nickname });
   };
 
   useEffect(() => {
     setIsPasswordMatch(password === confirmPassword);
-    setIsFormValid(nickname !== "" && user_id !== "" && password !== "" && confirmPassword !== "" && password === confirmPassword);
+    setIsFormValid(
+      nickname !== "" &&
+        user_id !== "" &&
+        password !== "" &&
+        confirmPassword !== "" &&
+        password === confirmPassword,
+    );
   }, [nickname, user_id, password, confirmPassword]);
 
   return (
@@ -37,7 +43,10 @@ export default function RegisterForm() {
           <h2 className="text-3xl font-bold mb-6 text-center">회원가입</h2>
           <form onSubmit={onRegister}>
             <div className="mb-4">
-              <label htmlFor="nickname" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="nickname"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 닉네임
               </label>
               <input
@@ -51,7 +60,10 @@ export default function RegisterForm() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="user_id" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="user_id"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 아이디(이메일)
               </label>
               <input
@@ -65,7 +77,10 @@ export default function RegisterForm() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 비밀번호
               </label>
               <input
@@ -79,9 +94,18 @@ export default function RegisterForm() {
               />
             </div>
             <div className="mb-6">
-              <label htmlFor="confirm-password" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="confirm-password"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 비밀번호 확인
-                {confirmPassword && <span className={`ml-2 ${isPasswordMatch ? "text-green-500" : "text-red-500"}`}>{isPasswordMatch ? "✔" : "✖"}</span>}
+                {confirmPassword && (
+                  <span
+                    className={`ml-2 ${isPasswordMatch ? "text-green-500" : "text-red-500"}`}
+                  >
+                    {isPasswordMatch ? "✔" : "✖"}
+                  </span>
+                )}
               </label>
               <input
                 type="password"
@@ -96,7 +120,9 @@ export default function RegisterForm() {
             <button
               type="submit"
               className={`w-full bg-yellow-400 text-black py-2 rounded-3xl transition duration-200 ${
-                isFormValid ? "hover:bg-yellow-600" : "cursor-not-allowed opacity-50"
+                isFormValid
+                  ? "hover:bg-yellow-600"
+                  : "cursor-not-allowed opacity-50"
               }`}
               disabled={!isFormValid}
             >
