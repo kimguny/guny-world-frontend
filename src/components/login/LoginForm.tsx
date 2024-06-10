@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState, FormEvent } from "react";
 import useLoginMutation from "@/hooks/mutation/useLoginMutation";
-import { useCookies } from "react-cookie";
-import { useRouter } from "next/navigation";
-import styles from "./LoginForm.module.css";
+import React, { useEffect, useState, FormEvent } from "react";
 import Lanyard from "@/components/common/Lanyard";
+import styles from "./LoginForm.module.css";
+import { useRouter } from "next/navigation";
+import { useCookies } from "react-cookie";
 import Image from "next/image";
 
 export default function LoginForm() {
@@ -28,15 +28,18 @@ export default function LoginForm() {
 
   return (
     <div className="flex items-start justify-center bg-slate-100 h-screen">
-      <div className={`${styles["slide-down"]} rounded-lg w-full max-w-sm `}>
+      <div className={`${styles["slide-down"]} rounded-lg w-full max-w-sm p-4`}>
         <div style={{ height: "12rem" }}>
           <Lanyard />
         </div>
-        <div className="rounded-3xl bg-white border-yellow-400 border-4 p-6">
+        <div className="rounded-3xl bg-white p-6">
           <h2 className="text-3xl font-bold mb-6 text-center">로그인</h2>
           <form onSubmit={onLogin}>
             <div className="mb-4">
-              <label htmlFor="username" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="username"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 아이디(이메일)
               </label>
               <input
@@ -50,7 +53,10 @@ export default function LoginForm() {
               />
             </div>
             <div className="mb-6">
-              <label htmlFor="password" className="block text-gray-700 font-medium mb-2 px-3">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 font-medium mb-2 px-3"
+              >
                 비밀번호
               </label>
               <input
@@ -64,14 +70,23 @@ export default function LoginForm() {
               />
             </div>
             <div className="mb-4 flex items-center justify-between px-3">
-              <a href="/register" className="text-base text-yellow-500 hover:underline">
+              <a
+                href="/register"
+                className="text-base text-yellow-500 hover:underline"
+              >
                 회원가입 바로가기
               </a>
-              <a href="/register" className="text-base text-yellow-500 hover:underline">
+              <a
+                href="/register"
+                className="text-base text-yellow-500 hover:underline"
+              >
                 아이디/비밀번호 찾기
               </a>
             </div>
-            <button type="submit" className="w-full bg-yellow-400 text-black py-2 rounded-3xl hover:bg-yellow-600 transition duration-200">
+            <button
+              type="submit"
+              className="w-full bg-yellow-400 text-black py-2 rounded-3xl hover:bg-yellow-600 transition duration-200"
+            >
               로그인
             </button>
           </form>
@@ -82,16 +97,36 @@ export default function LoginForm() {
           </div>
           <div className="flex justify-center space-x-4">
             <a href="https://accounts.google.com/signin" className="text-3xl">
-              <Image src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/google.svg" alt="Google" width={32} height={32} />
+              <Image
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/google.svg"
+                alt="Google"
+                width={32}
+                height={32}
+              />
             </a>
             <a href="https://nid.naver.com/nidlogin.login" className="text-3xl">
-              <Image src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/naver.svg" alt="Naver" width={32} height={32} />
+              <Image
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/naver.svg"
+                alt="Naver"
+                width={32}
+                height={32}
+              />
             </a>
             <a href="https://www.kakao.com/talk" className="text-3xl">
-              <Image src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/kakao.svg" alt="Kakao" width={32} height={32} />
+              <Image
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/kakao.svg"
+                alt="Kakao"
+                width={32}
+                height={32}
+              />
             </a>
             <a href="https://www.facebook.com/login" className="text-3xl">
-              <Image src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg" alt="Facebook" width={32} height={32} />
+              <Image
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg"
+                alt="Facebook"
+                width={32}
+                height={32}
+              />
             </a>
           </div>
         </div>

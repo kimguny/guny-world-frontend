@@ -35,11 +35,11 @@ export default function RegisterForm() {
 
   return (
     <div className="flex items-start justify-center bg-slate-100 h-screen">
-      <div className={`${styles["slide-down"]} rounded-lg w-full max-w-sm `}>
+      <div className={`${styles["slide-down"]} rounded-lg w-full max-w-sm p-4`}>
         <div style={{ height: "12rem" }}>
           <Lanyard />
         </div>
-        <div className="rounded-3xl bg-white border-yellow-400 border-4 p-6">
+        <div className="rounded-3xl bg-white p-6">
           <h2 className="text-3xl font-bold mb-6 text-center">회원가입</h2>
           <form onSubmit={onRegister}>
             <div className="mb-4">
