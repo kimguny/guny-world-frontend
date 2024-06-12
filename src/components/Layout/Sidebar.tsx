@@ -40,6 +40,11 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.navItem}>
+          <Link href="/save/my-info" className={styles.navLink}>
+            MyInfo
+          </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/404" className={styles.navLink}>
             404
           </Link>
