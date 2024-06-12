@@ -22,8 +22,8 @@
     transition: all 0.1s;
   }
   .card {
-    width: 440px;
-    height: 620px;
+    width: 220px;
+    height: 310px;
     background-image: url('/img/pika.webp');
     background-size: cover;
   }
