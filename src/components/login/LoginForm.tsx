@@ -32,7 +32,8 @@ export default function LoginForm() {
         <div style={{ height: "12rem" }}>
           <Lanyard />
         </div>
-        <div className="rounded-3xl bg-white p-6">
+        <div className="bg-yellow-400 h-9 w-full rounded-t-3xl"></div>
+        <div className="rounded-b-3xl bg-white p-6">
           <h2 className="text-3xl font-bold mb-6 text-center">로그인</h2>
           <form onSubmit={onLogin}>
             <div className="mb-4">
@@ -98,7 +99,7 @@ export default function LoginForm() {
           <div className="flex justify-center space-x-4">
             <a href="https://accounts.google.com/signin" className="text-3xl">
               <Image
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/google.svg"
+                src="https://img.icons8.com/color/48/000000/google-logo.png"
                 alt="Google"
                 width={32}
                 height={32}
@@ -106,7 +107,7 @@ export default function LoginForm() {
             </a>
             <a href="https://nid.naver.com/nidlogin.login" className="text-3xl">
               <Image
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/naver.svg"
+                src="/img/btnG_아이콘사각.png"
                 alt="Naver"
                 width={32}
                 height={32}
@@ -114,16 +115,8 @@ export default function LoginForm() {
             </a>
             <a href="https://www.kakao.com/talk" className="text-3xl">
               <Image
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/kakao.svg"
+                src="https://img.icons8.com/color/48/000000/kakaotalk.png"
                 alt="Kakao"
-                width={32}
-                height={32}
-              />
-            </a>
-            <a href="https://www.facebook.com/login" className="text-3xl">
-              <Image
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg"
-                alt="Facebook"
                 width={32}
                 height={32}
               />
