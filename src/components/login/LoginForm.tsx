@@ -99,7 +99,7 @@ export default function LoginForm() {
           <div className="flex justify-center space-x-4">
             <a href="https://accounts.google.com/signin" className="text-3xl">
               <Image
-                src="https://img.icons8.com/color/48/000000/google-logo.png"
+                src="/img/search.png"
                 alt="Google"
                 width={32}
                 height={32}
@@ -113,14 +113,9 @@ export default function LoginForm() {
                 height={32}
               />
             </a>
-            <a href="https://www.kakao.com/talk" className="text-3xl">
-              <Image
-                src="https://img.icons8.com/color/48/000000/kakaotalk.png"
-                alt="Kakao"
-                width={32}
-                height={32}
-              />
-            </a>
+            {/* <a href="https://www.kakao.com/talk" className="text-3xl">
+              <Image src="" alt="Kakao" width={32} height={32} />
+            </a> */}
           </div>
         </div>
       </div>

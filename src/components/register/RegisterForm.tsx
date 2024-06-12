@@ -39,7 +39,8 @@ export default function RegisterForm() {
         <div style={{ height: "12rem" }}>
           <Lanyard />
         </div>
-        <div className="rounded-3xl bg-white p-6">
+        <div className="bg-yellow-400 h-9 w-full rounded-t-3xl"></div>
+        <div className="rounded-b-3xl bg-white p-6">
           <h2 className="text-3xl font-bold mb-6 text-center">회원가입</h2>
           <form onSubmit={onRegister}>
             <div className="mb-4">
