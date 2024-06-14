@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.2.1",
     "@tanstack/react-query": "^5.37.1",
     "axios": "^1.6.8",
+    "memoize": "^10.0.0",
     "next": "14.2.3",
     "next-fonts": "^1.5.1",
     "next-runtime-env": "^3.2.2",
