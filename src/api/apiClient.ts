@@ -34,6 +34,8 @@ const postReissue = memoize(
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         data;
 
+      console.log("보냄");
+
       setCookie("accessToken", newAccessToken, { path: "/" });
       localStorage.setItem("refreshToken", newRefreshToken);
 
@@ -59,6 +61,7 @@ apiClient.interceptors.response.use(
     const status = error.response?.status;
 
     if (status === 401) {
+      console.log("들어옴");
       try {
         const router = useRouter();
         const newAccessToken = await postReissue(router);
