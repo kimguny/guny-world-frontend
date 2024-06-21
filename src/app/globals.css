@@ -4,7 +4,9 @@
 
 @font-face {
   font-family: "SkyBori";
-  src: url("/fonts/SKYBORI.otf") format("opentype"), url("/fonts/SKYBORI.ttf") format("truetype");
+  src:
+    url("/fonts/SKYBORI.otf") format("opentype"),
+    url("/fonts/SKYBORI.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

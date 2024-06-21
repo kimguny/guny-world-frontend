@@ -1,7 +1,7 @@
 import { getCookie, setCookie, removeCookie } from "@/utils/cookies";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
 import memoize from "memoize";
+import axios from "axios";
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -22,13 +22,11 @@ apiClient.interceptors.request.use((config) => {
 });
 
 const postReissue = memoize(
-  async (): Promise<string | void> => {
+  async (router): Promise<string | void> => {
     try {
-      const accessToken = getCookie("accessToken");
       const refreshToken = localStorage.getItem("refreshToken");
 
       const tokens = {
-        accessToken,
         refreshToken,
       };
 
@@ -46,7 +44,6 @@ const postReissue = memoize(
 
       delete apiClient.defaults.headers.common.Authorization;
       alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
-      const router = useRouter();
       router.push("/login");
 
       return Promise.reject(error);
@@ -58,16 +55,24 @@ const postReissue = memoize(
 // 응답 인터셉터: 오류 처리
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
     const status = error.response?.status;
 
     if (status === 401) {
-      // 401 오류 발생 시 로그인 페이지로 리디렉션
-      const router = useRouter();
-      alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
-      removeCookie("accessToken");
-      localStorage.removeItem("refreshToken");
-      router.push("/login");
+      try {
+        const router = useRouter();
+        const newAccessToken = await postReissue(router);
+        if (newAccessToken) {
+          error.config.headers.Authorization = newAccessToken;
+          return axios(error.config);
+        }
+      } catch (reissueError) {
+        const router = useRouter();
+        alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
+        removeCookie("accessToken");
+        localStorage.removeItem("refreshToken");
+        router.push("/login");
+      }
     } else {
       // 기타 오류 처리
       const errorMessage = error.response?.data?.message || error.message;
