@@ -1,63 +1,41 @@
 "use client";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-interface User {
-  id: string;
-  name: string;
-}
+import useChzzkMutation from "@/hooks/mutation/useChzzkMutation";
+import { useState } from "react";
 
 export default function CheckFollow() {
-  // 유저가 입력할 정보
-  const [nidAut, setNidAut] = useState("");
-  const [nidSes, setNidSes] = useState("");
-  const [userId, setUserId] = useState("");
+  const [nidAut, setNidAut] = useState<string>("");
+  const [nidSes, setNidSes] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
 
-  const [followers, setFollowers] = useState<User[]>([]);
-  const [following, setFollowing] = useState<User[]>([]);
+  const [followers, setFollowers] = useState<string[]>([]);
+  const [following, setFollowing] = useState<string[]>([]);
 
-  const [mutualFollows, setMutualFollows] = useState<User[]>([]);
-  const [onlyFollowing, setOnlyFollowing] = useState<User[]>([]);
-  const [onlyFollowers, setOnlyFollowers] = useState<User[]>([]);
+  const [mutualFollows, setMutualFollows] = useState<string[]>([]);
+  const [onlyFollowing, setOnlyFollowing] = useState<string[]>([]);
+  const [onlyFollowers, setOnlyFollowers] = useState<string[]>([]);
 
-  const fetchFollowData = async () => {
-    try {
-      const headers = {
-        NID_AUT: nidAut,
-        NID_SES: nidSes,
-      };
+  const { mutate: postChzzk } = useChzzkMutation();
 
-      const followersResponse = await axios.get<User[]>("/api/followers", {
-        headers,
-        params: { userId },
-      });
-      const followingResponse = await axios.get<User[]>("/api/following", {
-        headers,
-        params: { userId },
-      });
+  const handleVerify = () => {
+    const requestBody = {
+      NID_AUT: nidAut,
+      NID_SES: nidSes,
+      id: userId,
+    };
 
-      const followersList = followersResponse.data;
-      const followingList = followingResponse.data;
-
-      setFollowers(followersList);
-      setFollowing(followingList);
-
-      const mutual = followingList.filter((user) =>
-        followersList.some((follower) => follower.id === user.id),
-      );
-      const onlyFollow = followingList.filter(
-        (user) => !followersList.some((follower) => follower.id === user.id),
-      );
-      const onlyFollowed = followersList.filter(
-        (user) => !followingList.some((following) => following.id === user.id),
-      );
-
-      setMutualFollows(mutual);
-      setOnlyFollowing(onlyFollow);
-      setOnlyFollowers(onlyFollowed);
-    } catch (error) {
-      console.error("Error fetching follow data:", error);
-    }
+    postChzzk(requestBody, {
+      onSuccess: (data) => {
+        console.log("Response data:", data);
+        setFollowers(data.followers);
+        setFollowing(data.followings);
+        setMutualFollows(data.mutualFollows);
+        setOnlyFollowing(data.onlyFollowing);
+        setOnlyFollowers(data.onlyFollowers);
+      },
+      onError: (error) => {
+        console.error("Error:", error);
+      },
+    });
   };
 
   return (
@@ -92,7 +70,7 @@ export default function CheckFollow() {
           />
         </label>
         <button
-          onClick={fetchFollowData}
+          onClick={handleVerify}
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
         >
           검증 요청
@@ -100,12 +78,46 @@ export default function CheckFollow() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
-          <h2 className="text-xl font-semibold mb-2">맞팔 리스트</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            팔로워 ({followers.length})
+          </h2>
+          {followers.length > 0 ? (
+            <ul className="overflow-y-auto max-h-48">
+              {followers.map((name, index) => (
+                <li key={index} className="mb-1 h-10">
+                  {name}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>아무도 없다..</p>
+          )}
+        </div>
+        <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
+          <h2 className="text-xl font-semibold mb-2">
+            팔로잉 ({following.length})
+          </h2>
+          {following.length > 0 ? (
+            <ul className="overflow-y-auto max-h-48">
+              {following.map((name, index) => (
+                <li key={index} className="mb-1 h-10">
+                  {name}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>아무도 없다..</p>
+          )}
+        </div>
+        <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
+          <h2 className="text-xl font-semibold mb-2">
+            맞팔 리스트 ({mutualFollows.length})
+          </h2>
           {mutualFollows.length > 0 ? (
-            <ul>
-              {mutualFollows.map((user) => (
-                <li key={user.id} className="mb-1">
-                  {user.name}
+            <ul className="overflow-y-auto max-h-48">
+              {mutualFollows.map((name, index) => (
+                <li key={index} className="mb-1 h-10">
+                  {name}
                 </li>
               ))}
             </ul>
@@ -114,12 +126,14 @@ export default function CheckFollow() {
           )}
         </div>
         <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
-          <h2 className="text-xl font-semibold mb-2">나만 팔로우 리스트</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            나만 팔로우 리스트 ({onlyFollowing.length})
+          </h2>
           {onlyFollowing.length > 0 ? (
-            <ul>
-              {onlyFollowing.map((user) => (
-                <li key={user.id} className="mb-1">
-                  {user.name}
+            <ul className="overflow-y-auto max-h-48">
+              {onlyFollowing.map((name, index) => (
+                <li key={index} className="mb-1 h-10">
+                  {name}
                 </li>
               ))}
             </ul>
@@ -128,12 +142,14 @@ export default function CheckFollow() {
           )}
         </div>
         <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
-          <h2 className="text-xl font-semibold mb-2">상대만 팔로워 리스트</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            상대만 팔로워 리스트 ({onlyFollowers.length})
+          </h2>
           {onlyFollowers.length > 0 ? (
-            <ul>
-              {onlyFollowers.map((user) => (
-                <li key={user.id} className="mb-1">
-                  {user.name}
+            <ul className="overflow-y-auto max-h-48">
+              {onlyFollowers.map((name, index) => (
+                <li key={index} className="mb-1 h-10">
+                  {name}
                 </li>
               ))}
             </ul>
