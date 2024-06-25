@@ -33,7 +33,7 @@ export default function LoginForm() {
           <Lanyard />
         </div>
         <div className="bg-yellow-400 h-9 w-full rounded-t-3xl"></div>
-        <div className="rounded-b-3xl bg-white p-6">
+        <div className="rounded-b-3xl bg-white p-4">
           <h2 className="text-3xl font-bold mb-6 text-center">로그인</h2>
           <form onSubmit={onLogin}>
             <div className="mb-4">
@@ -70,18 +70,12 @@ export default function LoginForm() {
                 required
               />
             </div>
-            <div className="mb-4 flex items-center justify-between px-3">
+            <div className="mb-4 flex items-center px-3">
               <a
                 href="/register"
                 className="text-base text-yellow-500 hover:underline"
               >
                 회원가입 바로가기
-              </a>
-              <a
-                href="/register"
-                className="text-base text-yellow-500 hover:underline"
-              >
-                아이디/비밀번호 찾기
               </a>
             </div>
             <button

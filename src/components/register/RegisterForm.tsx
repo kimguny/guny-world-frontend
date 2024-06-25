@@ -40,7 +40,7 @@ export default function RegisterForm() {
           <Lanyard />
         </div>
         <div className="bg-yellow-400 h-9 w-full rounded-t-3xl"></div>
-        <div className="rounded-b-3xl bg-white p-6">
+        <div className="rounded-b-3xl bg-white p-4">
           <h2 className="text-3xl font-bold mb-6 text-center">회원가입</h2>
           <form onSubmit={onRegister}>
             <div className="mb-4">
