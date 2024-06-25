@@ -9,6 +9,8 @@ const apiClient = axios.create({
   },
 });
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 // 요청 인터셉터: 토큰을 헤더에 추가
 apiClient.interceptors.request.use((config) => {
   const accessToken = getCookie("accessToken");
@@ -29,7 +31,7 @@ const postReissue = memoize(
         refreshToken,
       };
 
-      const { data } = await axios.post(`api/reissue`, tokens);
+      const { data } = await axios.post(`${API_BASE_URL}/api/reissue`, tokens);
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         data;
 
