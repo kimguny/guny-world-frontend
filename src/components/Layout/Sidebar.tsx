@@ -5,9 +5,11 @@ import DarkToggle from "@/components/common/DarkToggle";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./Sidebar.module.css";
+import useLogout from "@/hooks/useLogout";
 import Link from "next/link";
 
 export default function Sidebar() {
+  const logout = useLogout();
   const pathname = usePathname();
   const [nickname, setNickname] = useState("");
   const { mutate, data, error } = useUserInfoMutation();
@@ -26,6 +28,10 @@ export default function Sidebar() {
     return pathname === path ? styles.active : "";
   };
 
+  const isLogout = () => {
+    logout();
+  };
+
   return (
     <>
       <div id="sidebar" className={styles.sidebar}>
@@ -34,7 +40,16 @@ export default function Sidebar() {
             {nickname ? nickname : "Loading..."}
           </span>
         </div>
-        <DarkToggle />
+        <div className="flex items-center justify-center gap-4">
+          <DarkToggle />
+          <button
+            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-100"
+            onClick={() => isLogout()}
+          >
+            로그아웃
+          </button>
+        </div>
+
         <ul className={styles.navList}>
           <li className={`${styles.navItem} ${isActive("/save/main")}`}>
             <Link href="/save/main" className={styles.navLink}>

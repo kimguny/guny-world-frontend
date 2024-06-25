@@ -1,5 +1,4 @@
 import { getCookie, setCookie, removeCookie } from "@/utils/cookies";
-import { useRouter } from "next/navigation";
 import memoize from "memoize";
 import axios from "axios";
 
@@ -22,7 +21,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 const postReissue = memoize(
-  async (router): Promise<string | void> => {
+  async (): Promise<string | void> => {
     try {
       const refreshToken = localStorage.getItem("refreshToken");
 
@@ -46,7 +45,7 @@ const postReissue = memoize(
 
       delete apiClient.defaults.headers.common.Authorization;
       alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
-      router.push("/login");
+      window.location.href = "/login";
 
       return Promise.reject(error);
     }
@@ -63,18 +62,16 @@ apiClient.interceptors.response.use(
     if (status === 401) {
       console.log("들어옴");
       try {
-        const router = useRouter();
-        const newAccessToken = await postReissue(router);
+        const newAccessToken = await postReissue();
         if (newAccessToken) {
           error.config.headers.Authorization = newAccessToken;
           return axios(error.config);
         }
       } catch (reissueError) {
-        const router = useRouter();
         alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
         removeCookie("accessToken");
         localStorage.removeItem("refreshToken");
-        router.push("/login");
+        window.location.href = "/login";
       }
     } else {
       // 기타 오류 처리
