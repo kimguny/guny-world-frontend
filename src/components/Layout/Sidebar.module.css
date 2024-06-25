@@ -17,11 +17,11 @@
 }
 
 .navItem:hover {
-  background-color: #ffffe0;
+  background-color: #ffffff;
 }
 
 .navItem.active {
-  background-color: #ffffe0;
+  background-color: #ffffff;
 }
 
 .navLink {

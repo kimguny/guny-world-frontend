@@ -34,7 +34,10 @@ export default function Sidebar() {
 
   return (
     <>
-      <div id="sidebar" className={styles.sidebar}>
+      <div
+        id="sidebar"
+        className={`${styles.sidebar} dark:bg-gray-800 dark:text-white`}
+      >
         <div className="flex flex-col items-center mb-4">
           <span className="text-lg font-semibold mt-2">
             {nickname ? nickname : "Loading..."}
@@ -43,31 +46,48 @@ export default function Sidebar() {
         <div className="flex items-center justify-center gap-4">
           <DarkToggle />
           <button
-            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-100"
-            onClick={() => isLogout()}
+            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+            onClick={isLogout}
           >
             로그아웃
           </button>
         </div>
 
         <ul className={styles.navList}>
-          <li className={`${styles.navItem} ${isActive("/save/main")}`}>
-            <Link href="/save/main" className={styles.navLink}>
+          <li
+            className={`${styles.navItem} ${isActive("/save/main")} dark:hover:bg-gray-700 dark:bg-gray-900`}
+          >
+            <Link
+              href="/save/main"
+              className={`${styles.navLink} dark:text-white`}
+            >
               Main
             </Link>
           </li>
-          <li className={`${styles.navItem} ${isActive("/save/chzzk")}`}>
-            <Link href="/save/chzzk" className={styles.navLink}>
+          <li
+            className={`${styles.navItem} ${isActive("/save/chzzk")} dark:hover:bg-gray-700 dark:bg-gray-900`}
+          >
+            <Link
+              href="/save/chzzk"
+              className={`${styles.navLink} dark:text-white`}
+            >
               Chzzk
             </Link>
           </li>
-          <li className={`${styles.navItem} ${isActive("/save/my-info")}`}>
-            <Link href="/save/my-info" className={styles.navLink}>
+          <li
+            className={`${styles.navItem} ${isActive("/save/my-info")} dark:hover:bg-gray-700 dark:bg-gray-900`}
+          >
+            <Link
+              href="/save/my-info"
+              className={`${styles.navLink} dark:text-white`}
+            >
               MyInfo
             </Link>
           </li>
-          <li className={`${styles.navItem} ${isActive("/404")}`}>
-            <Link href="/404" className={styles.navLink}>
+          <li
+            className={`${styles.navItem} ${isActive("/404")} dark:hover:bg-gray-700 dark:bg-gray-900`}
+          >
+            <Link href="/404" className={`${styles.navLink} dark:text-white`}>
               404
             </Link>
           </li>
