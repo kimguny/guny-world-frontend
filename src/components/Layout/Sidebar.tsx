@@ -4,7 +4,6 @@ import useUserInfoMutation from "@/hooks/mutation/useUserInfoMutation";
 import DarkToggle from "@/components/common/DarkToggle";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import styles from "./Sidebar.module.css";
 import useLogout from "@/hooks/useLogout";
 import Link from "next/link";
 
@@ -25,7 +24,7 @@ export default function Sidebar() {
   }, [data]);
 
   const isActive = (path: any) => {
-    return pathname === path ? styles.active : "";
+    return pathname === path ? "bg-gray-200 dark:bg-gray-700" : "";
   };
 
   const isLogout = () => {
@@ -33,66 +32,75 @@ export default function Sidebar() {
   };
 
   return (
-    <>
-      <div
-        id="sidebar"
-        className={`${styles.sidebar} dark:bg-gray-800 dark:text-white`}
-      >
-        <div className="flex flex-col items-center mb-4">
-          <span className="text-lg font-semibold mt-2">
-            {nickname ? nickname : "Loading..."}
-          </span>
-        </div>
-        <div className="flex items-center justify-center gap-4">
-          <DarkToggle />
-          <button
-            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-            onClick={isLogout}
-          >
-            로그아웃
-          </button>
-        </div>
-
-        <ul className={styles.navList}>
-          <li
-            className={`${styles.navItem} ${isActive("/save/main")} dark:hover:bg-gray-700 dark:bg-gray-900`}
-          >
-            <Link
-              href="/save/main"
-              className={`${styles.navLink} dark:text-white`}
-            >
-              Main
-            </Link>
-          </li>
-          <li
-            className={`${styles.navItem} ${isActive("/save/chzzk")} dark:hover:bg-gray-700 dark:bg-gray-900`}
-          >
-            <Link
-              href="/save/chzzk"
-              className={`${styles.navLink} dark:text-white`}
-            >
-              Chzzk
-            </Link>
-          </li>
-          <li
-            className={`${styles.navItem} ${isActive("/save/my-info")} dark:hover:bg-gray-700 dark:bg-gray-900`}
-          >
-            <Link
-              href="/save/my-info"
-              className={`${styles.navLink} dark:text-white`}
-            >
-              MyInfo
-            </Link>
-          </li>
-          <li
-            className={`${styles.navItem} ${isActive("/404")} dark:hover:bg-gray-700 dark:bg-gray-900`}
-          >
-            <Link href="/404" className={`${styles.navLink} dark:text-white`}>
-              404
-            </Link>
-          </li>
-        </ul>
+    <div
+      id="sidebar"
+      className="p-6 w-60 text-black dark:bg-gray-800 dark:text-white"
+    >
+      <div className="flex flex-col items-center mb-4">
+        <span className="text-lg font-semibold mt-2">
+          {nickname ? nickname : "Loading..."}
+        </span>
       </div>
-    </>
+      <div className="flex items-center justify-center gap-4">
+        <DarkToggle />
+        <button
+          className="px-4 py-2 bg-gray-100 text-black rounded hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+          onClick={isLogout}
+        >
+          로그아웃
+        </button>
+      </div>
+
+      <ul className="list-none p-0">
+        <li
+          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+            "/save/main",
+          )}`}
+        >
+          <Link
+            href="/save/main"
+            className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+          >
+            Main
+          </Link>
+        </li>
+        <li
+          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+            "/save/chzzk",
+          )}`}
+        >
+          <Link
+            href="/save/chzzk"
+            className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+          >
+            Chzzk
+          </Link>
+        </li>
+        <li
+          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+            "/save/my-info",
+          )}`}
+        >
+          <Link
+            href="/save/my-info"
+            className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+          >
+            MyInfo
+          </Link>
+        </li>
+        <li
+          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+            "/404",
+          )}`}
+        >
+          <Link
+            href="/404"
+            className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+          >
+            404
+          </Link>
+        </li>
+      </ul>
+    </div>
   );
 }
