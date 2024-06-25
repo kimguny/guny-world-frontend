@@ -1,11 +1,17 @@
-"use client";
-
 import QueryClientProvider from "@/provider/QueryClientProvider";
+import RecoilRootProvider from "@/provider/RecoilRootProvider";
 import { DarkModeProvider } from "@/context/DarkModeContext";
-import { RecoilRoot } from "recoil";
 import React from "react";
 
 import "./globals.css";
+
+export const metadata = {
+  title: "Guny World",
+  description: "Why",
+  icons: {
+    icon: "/체리.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -14,13 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <RecoilRoot>
+      <RecoilRootProvider>
         <QueryClientProvider>
           <DarkModeProvider>
             <body>{children}</body>
           </DarkModeProvider>
         </QueryClientProvider>
-      </RecoilRoot>
+      </RecoilRootProvider>
     </html>
   );
 }
