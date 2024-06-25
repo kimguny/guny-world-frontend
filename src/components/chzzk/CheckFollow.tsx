@@ -39,7 +39,7 @@ export default function CheckFollow() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 dark:bg-gray-800 dark:text-white">
       <h1 className="text-2xl font-bold mb-4">Follow Status</h1>
       <div className="mb-4">
         <label className="block mb-2">
@@ -48,7 +48,7 @@ export default function CheckFollow() {
             type="text"
             value={nidAut}
             onChange={(e) => setNidAut(e.target.value)}
-            className="block w-full mt-1 p-2 border border-gray-300 rounded"
+            className="block w-full mt-1 p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         </label>
         <label className="block mb-2">
@@ -57,7 +57,7 @@ export default function CheckFollow() {
             type="text"
             value={nidSes}
             onChange={(e) => setNidSes(e.target.value)}
-            className="block w-full mt-1 p-2 border border-gray-300 rounded"
+            className="block w-full mt-1 p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         </label>
         <label className="block mb-2">
@@ -66,12 +66,12 @@ export default function CheckFollow() {
             type="text"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
-            className="block w-full mt-1 p-2 border border-gray-300 rounded"
+            className="block w-full mt-1 p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           />
         </label>
         <button
           onClick={handleVerify}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
         >
           검증 요청
         </button>
