@@ -15,7 +15,7 @@ body {
   font-family: "SkyBori", sans-serif;
 }
 
-@layer base {
+/* @layer base {
   body {
     @apply bg-white text-black dark:bg-gray-700 dark:text-white;
   }
@@ -25,4 +25,4 @@ body {
   #sidebar {
     @apply bg-gray-100 dark:bg-gray-900 dark:text-white;
   }
-}
+} */
