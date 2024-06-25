@@ -40,7 +40,7 @@ export default function CheckFollow() {
 
   return (
     <div className="p-4 dark:bg-gray-800 dark:text-white">
-      <h1 className="text-2xl font-bold mb-4">Follow Status</h1>
+      <h1 className="text-2xl font-bold mb-4">치지직 팔로우, 필로잉 정보</h1>
       <div className="mb-4">
         <label className="block mb-2">
           NID_AUT:
@@ -61,7 +61,7 @@ export default function CheckFollow() {
           />
         </label>
         <label className="block mb-2">
-          User ID:
+          치지직 채널 고유 ID (url 뒤에 붙는 값):
           <input
             type="text"
             value={userId}
@@ -79,7 +79,7 @@ export default function CheckFollow() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
           <h2 className="text-xl font-semibold mb-2">
-            팔로워 ({followers.length})
+            팔로워 리스트 ({followers.length})
           </h2>
           {followers.length > 0 ? (
             <ul className="overflow-y-auto max-h-48">
@@ -95,7 +95,7 @@ export default function CheckFollow() {
         </div>
         <div className="bg-white shadow-md rounded-lg p-4 dark:bg-gray-700 dark:text-white">
           <h2 className="text-xl font-semibold mb-2">
-            팔로잉 ({following.length})
+            팔로잉 리스트 ({following.length})
           </h2>
           {following.length > 0 ? (
             <ul className="overflow-y-auto max-h-48">
