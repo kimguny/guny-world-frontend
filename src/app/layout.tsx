@@ -9,7 +9,7 @@ export const metadata = {
   title: "Guny World",
   description: "Why",
   icons: {
-    icon: "/체리.png",
+    icon: "/체리.ico",
   },
 };
 
