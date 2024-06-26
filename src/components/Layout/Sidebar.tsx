@@ -24,7 +24,9 @@ export default function Sidebar() {
   }, [data]);
 
   const isActive = (path: any) => {
-    return pathname === path ? "bg-gray-200 dark:bg-gray-700" : "";
+    return pathname === path
+      ? "bg-gradient-yellow-active dark:bg-gray-700"
+      : "";
   };
 
   const isLogout = () => {
@@ -34,7 +36,7 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="p-6 w-60 text-black dark:bg-gray-800 dark:text-white"
+      className="p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white"
     >
       <div className="flex flex-col items-center mb-4">
         <span className="text-lg font-semibold mt-2">
@@ -53,9 +55,9 @@ export default function Sidebar() {
 
       <ul className="list-none p-0">
         <li
-          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+          className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/main",
-          )}`}
+          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
         >
           <Link
             href="/save/main"
@@ -65,9 +67,9 @@ export default function Sidebar() {
           </Link>
         </li>
         <li
-          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+          className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/chzzk",
-          )}`}
+          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
         >
           <Link
             href="/save/chzzk"
@@ -77,9 +79,9 @@ export default function Sidebar() {
           </Link>
         </li>
         <li
-          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+          className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/my-info",
-          )}`}
+          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
         >
           <Link
             href="/save/my-info"
@@ -89,9 +91,9 @@ export default function Sidebar() {
           </Link>
         </li>
         <li
-          className={`my-4 rounded-3xl relative overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive(
+          className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/404",
-          )}`}
+          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
         >
           <Link
             href="/404"

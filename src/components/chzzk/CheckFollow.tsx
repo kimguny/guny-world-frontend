@@ -39,7 +39,7 @@ export default function CheckFollow() {
   };
 
   return (
-    <div className="p-4 dark:bg-gray-800 dark:text-white">
+    <div className="dark:bg-gray-800 dark:text-white">
       <h1 className="text-2xl font-bold mb-4">치지직 팔로우, 필로잉 정보</h1>
       <div className="mb-4">
         <label className="block mb-2">

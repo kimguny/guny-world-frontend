@@ -3,8 +3,13 @@
   height: 100vh;
 }
 
+.sidebar {
+  width: 240px; /* 사이드바의 너비를 고정합니다 */
+}
+
 .content {
   flex-grow: 1;
   padding: 1rem;
+  margin: 1rem;
   overflow-y: auto;
 }
