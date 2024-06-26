@@ -2,14 +2,17 @@
 
 import useUserInfoMutation from "@/hooks/mutation/useUserInfoMutation";
 import DarkToggle from "@/components/common/DarkToggle";
+import { sidebarState } from "@/store/atom/sidebar";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useRecoilValue } from "recoil";
 import Link from "next/link";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [nickname, setNickname] = useState("");
   const { mutate, data, error } = useUserInfoMutation();
+  const isSidebarOpen = useRecoilValue(sidebarState);
 
   useEffect(() => {
     mutate();
@@ -30,7 +33,9 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0"
+      className={`fixed md:relative z-40 transform transition-transform duration-300 ease-in-out ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      } p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full`}
     >
       <div className="flex flex-col items-center mb-4">
         <span className="text-lg font-semibold mt-2">
