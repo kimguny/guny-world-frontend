@@ -1,6 +1,7 @@
+import dynamic from "next/dynamic";
 import React from "react";
 
-import Main from "@/components/main/Main";
+const Main = dynamic(() => import("@/components/main/Main"));
 
 export default function MainPage() {
   return (
