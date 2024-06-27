@@ -1,7 +1,6 @@
 "use client";
 
 import useUserInfoMutation from "@/hooks/mutation/useUserInfoMutation";
-import DarkToggle from "@/components/common/DarkToggle";
 import { sidebarState } from "@/store/atom/sidebar";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -41,9 +40,6 @@ export default function Sidebar() {
         <span className="text-lg font-semibold mt-2">
           {nickname ? nickname : "Loading..."}
         </span>
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        <DarkToggle />
       </div>
 
       <ul className="list-none p-0">

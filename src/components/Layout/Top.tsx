@@ -1,5 +1,6 @@
 "use client";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import DarkToggle from "@/components/common/DarkToggle";
 import { sidebarState } from "@/store/atom/sidebar";
 import useLogout from "@/hooks/useLogout";
 import { useRecoilState } from "recoil";
@@ -32,6 +33,7 @@ export default function Top() {
           )}
         </div>
         <div className="flex items-center gap-4">
+          <DarkToggle />
           <button
             className="px-4 py-2 text-black dark:text-white"
             onClick={logout}
