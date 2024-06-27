@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   const isActive = (path: any) => {
     return pathname === path
-      ? "bg-gradient-yellow-active dark:bg-gray-700"
+      ? "bg-gradient-yellow-active dark:bg-gradient-dark-active"
       : "";
   };
 
@@ -50,7 +50,7 @@ export default function Sidebar() {
         <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/main",
-          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
+          )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
         >
           <Link
             href="/save/main"
@@ -62,7 +62,7 @@ export default function Sidebar() {
         <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/chzzk",
-          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
+          )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
         >
           <Link
             href="/save/chzzk"
@@ -74,7 +74,7 @@ export default function Sidebar() {
         <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/my-info",
-          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
+          )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
         >
           <Link
             href="/save/my-info"
@@ -86,7 +86,7 @@ export default function Sidebar() {
         <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/404",
-          )} hover:bg-gradient-yellow-hover active:bg-gradient-yellow-active`}
+          )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
         >
           <Link
             href="/404"
