@@ -1,6 +1,6 @@
 "use client";
 
-import useUserInfoMutation from "@/hooks/mutation/useUserInfoMutation";
+import useUserInfoQuery from "@/hooks/query/useUserInfoQuery";
 import { sidebarState } from "@/store/atom/sidebar";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -10,12 +10,8 @@ import Link from "next/link";
 export default function Sidebar() {
   const pathname = usePathname();
   const [nickname, setNickname] = useState("");
-  const { mutate, data, error } = useUserInfoMutation();
+  const { data } = useUserInfoQuery();
   const isSidebarOpen = useRecoilValue(sidebarState);
-
-  useEffect(() => {
-    mutate();
-  }, [mutate]);
 
   useEffect(() => {
     if (data) {
