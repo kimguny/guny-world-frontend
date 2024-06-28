@@ -32,7 +32,9 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className={`p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full`}
+      className={`fixed transition-all duration-500 ease-in-out transform ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full z-50`}
     >
       <div className="flex flex-col items-center mb-4">
         <span className="text-lg font-semibold mt-2">
