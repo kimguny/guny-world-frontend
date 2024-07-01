@@ -18,19 +18,11 @@ export default function Top() {
     <>
       <div className="bg-light-yellow h-14 m-4 p-4 mb-0 border border-slate-400 rounded-2xl bg-white dark:bg-gray-800 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          {isSidebarOpen ? (
-            <FaArrowCircleLeft
-              size={32}
-              className="cursor-pointer"
-              onClick={toggleSidebar}
-            />
-          ) : (
-            <FaArrowCircleRight
-              size={32}
-              className="cursor-pointer"
-              onClick={toggleSidebar}
-            />
-          )}
+          <FaArrowCircleRight
+            size={32}
+            className="cursor-pointer md:hidden"
+            onClick={toggleSidebar}
+          />
         </div>
         <div className="flex items-center gap-4">
           <DarkToggle />

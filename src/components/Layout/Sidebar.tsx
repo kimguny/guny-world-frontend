@@ -1,10 +1,10 @@
 "use client";
 
 import useUserInfoQuery from "@/hooks/query/useUserInfoQuery";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { sidebarState } from "@/store/atom/sidebar";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useRecoilValue } from "recoil";
 import Link from "next/link";
 
 export default function Sidebar() {
@@ -12,12 +12,17 @@ export default function Sidebar() {
   const [nickname, setNickname] = useState("");
   const { data } = useUserInfoQuery();
   const isSidebarOpen = useRecoilValue(sidebarState);
+  const setSidebarOpen = useSetRecoilState(sidebarState);
 
   useEffect(() => {
     if (data) {
       setNickname(data.nickname);
     }
   }, [data]);
+
+  const handleCloseSidebar = () => {
+    setSidebarOpen(false);
+  };
 
   const isActive = (path: any) => {
     return pathname === path
@@ -28,9 +33,9 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className={`fixed transition-all duration-500 ease-in-out transform ${
+      className={`fixed md:relative transition-all duration-500 ease-in-out transform ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full z-50`}
+      } md:translate-x-0 p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full z-50`}
     >
       <div className="flex flex-col items-center mb-4">
         <span className="text-lg font-semibold mt-2">
@@ -47,6 +52,7 @@ export default function Sidebar() {
           <Link
             href="/save/main"
             className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+            onClick={handleCloseSidebar}
           >
             Main
           </Link>
@@ -59,6 +65,7 @@ export default function Sidebar() {
           <Link
             href="/save/chzzk"
             className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+            onClick={handleCloseSidebar}
           >
             Chzzk
           </Link>
@@ -71,6 +78,7 @@ export default function Sidebar() {
           <Link
             href="/save/my-info"
             className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+            onClick={handleCloseSidebar}
           >
             MyInfo
           </Link>
@@ -83,6 +91,7 @@ export default function Sidebar() {
           <Link
             href="/404"
             className="block text-inherit no-underline rounded-3xl px-4 py-2 relative z-10 dark:text-white"
+            onClick={handleCloseSidebar}
           >
             404
           </Link>
