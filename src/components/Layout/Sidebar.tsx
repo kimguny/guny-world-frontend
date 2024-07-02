@@ -33,9 +33,9 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className={`fixed md:relative transition-all duration-500 ease-in-out transform ${
+      className={`fixed md:relative transform ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full z-50`}
+      } md:translate-x-0 p-6 w-60 bg-light-yellow text-black dark:bg-gray-800 dark:text-white flex-shrink-0 h-full z-50 transition-transform duration-500 ease-in-out`}
     >
       <div className="flex flex-col items-center mb-4">
         <span className="text-lg font-semibold mt-2">
