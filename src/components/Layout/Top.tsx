@@ -3,6 +3,7 @@ import DarkToggle from "@/components/common/DarkToggle";
 import { sidebarState } from "@/store/atom/sidebar";
 import { CiMenuBurger } from "react-icons/ci";
 import useLogout from "@/hooks/useLogout";
+import { FiLogOut } from "react-icons/fi";
 import { useRecoilState } from "recoil";
 import React from "react";
 
@@ -26,11 +27,8 @@ export default function Top() {
         </div>
         <div className="flex items-center gap-4">
           <DarkToggle />
-          <button
-            className="px-4 py-2 text-black dark:text-white"
-            onClick={logout}
-          >
-            로그아웃
+          <button className="text-black dark:text-white" onClick={logout}>
+            <FiLogOut size={24} />
           </button>
         </div>
       </div>
