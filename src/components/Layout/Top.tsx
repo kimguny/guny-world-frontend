@@ -18,14 +18,14 @@ export default function Top() {
   return (
     <>
       <div className="bg-light-yellow h-14 m-4 p-4 mb-0 border border-slate-400 rounded-2xl bg-white dark:bg-gray-800 flex justify-between items-center">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <CiMenuBurger
             size={32}
             className="cursor-pointer md:hidden dark:text-white"
             onClick={toggleSidebar}
           />
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <DarkToggle />
           <button className="text-black dark:text-white" onClick={logout}>
             <FiLogOut size={24} />
