@@ -34,7 +34,7 @@ export default function RegisterForm() {
   }, [nickname, user_id, password, confirmPassword]);
 
   return (
-    <div className="flex items-start justify-center bg-slate-100 h-screen">
+    <div className="flex items-start justify-center bg-slate-100 h-screen overflow-y-auto">
       <div className={`${styles["slide-down"]} rounded-lg w-full max-w-sm p-4`}>
         <div style={{ height: "12rem" }}>
           <Lanyard />
