@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { register } from "@/api/register";
+import { AxiosError } from "axios";
 
 export default function useRegisterMutation() {
   const router = useRouter();
@@ -8,8 +9,12 @@ export default function useRegisterMutation() {
   const mutate = useMutation({
     mutationFn: register,
     onSuccess: (data) => {
-      alert("회원가입 완료되었습니다.");
+      alert(data.message);
       router.push("/login");
+    },
+    onError: (error: AxiosError) => {
+      const errorMessage = (error.response?.data as { error: string }).error;
+      alert(errorMessage);
     },
   });
 
