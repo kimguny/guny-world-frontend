@@ -70,7 +70,7 @@ export default function Sidebar() {
             Chzzk
           </Link>
         </li>
-        <li
+        {/* <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/save/my-info",
           )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
@@ -82,7 +82,7 @@ export default function Sidebar() {
           >
             MyInfo
           </Link>
-        </li>
+        </li> */}
         <li
           className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
             "/404",
