@@ -10,10 +10,13 @@ export default function DarkToggle() {
   return (
     <button
       onClick={toggleDarkMode}
-      className={`p-2 m-2 text-black dark:text-white bg-transparent hover:bg-gray-300 dark:hover:bg-gray-700 rounded-full transition-colors duration-300 ripple-effect`}
+      className={`p-4 text-black dark:text-white group`}
       aria-label="Toggle Dark Mode"
     >
-      <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
+      <FontAwesomeIcon
+        icon={darkMode ? faMoon : faSun}
+        className="transition-transform duration-300 ease-in-out group-hover:scale-125"
+      />
     </button>
   );
 }

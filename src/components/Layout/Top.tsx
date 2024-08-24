@@ -28,10 +28,13 @@ export default function Top() {
         <div className="flex items-center">
           <DarkToggle />
           <button
-            className="p-2 m-2 text-black dark:text-white bg-transparent hover:bg-gray-300 dark:hover:bg-gray-700 rounded-full transition-colors duration-300 ripple-effect"
+            className="p-4 text-black dark:text-white group"
             onClick={logout}
           >
-            <FiLogOut size={24} />
+            <FiLogOut
+              size={24}
+              className="transition-transform duration-300 ease-in-out group-hover:scale-125"
+            />
           </button>
         </div>
       </div>
