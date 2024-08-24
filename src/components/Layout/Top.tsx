@@ -17,7 +17,7 @@ export default function Top() {
 
   return (
     <>
-      <div className="bg-light-yellow h-14 m-4 p-4 mb-0 border border-slate-400 rounded-2xl bg-white dark:bg-gray-800 flex justify-between items-center">
+      <div className="bg-light-yellow h-14 m-4 mb-0 border border-slate-400 rounded-2xl bg-white dark:bg-gray-800 flex justify-between items-center">
         <div className="flex items-center gap-6">
           <CiMenuBurger
             size={32}
@@ -25,9 +25,12 @@ export default function Top() {
             onClick={toggleSidebar}
           />
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center">
           <DarkToggle />
-          <button className="text-black dark:text-white" onClick={logout}>
+          <button
+            className="p-2 m-2 text-black dark:text-white bg-transparent hover:bg-gray-300 dark:hover:bg-gray-700 rounded-full transition-colors duration-300 ripple-effect"
+            onClick={logout}
+          >
             <FiLogOut size={24} />
           </button>
         </div>
