@@ -18,10 +18,10 @@ export default function Top() {
   return (
     <>
       <div className="bg-light-yellow h-14 m-4 mb-0 border border-slate-400 rounded-2xl bg-white dark:bg-gray-800 flex justify-between items-center">
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 p-2 m-2">
           <CiMenuBurger
             size={32}
-            className="cursor-pointer md:hidden dark:text-white"
+            className="cursor-pointer md:hidden dark:text-white transition-transform duration-300 ease-in-out hover:rotate-90"
             onClick={toggleSidebar}
           />
         </div>
