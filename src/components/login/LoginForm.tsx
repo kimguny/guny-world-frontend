@@ -1,30 +1,21 @@
 "use client";
+import { getCookie, setCookie, removeCookie } from "@/utils/cookies";
 import useLoginMutation from "@/hooks/mutation/useLoginMutation";
 import React, { useEffect, useState, FormEvent } from "react";
 import Lanyard from "@/components/common/Lanyard";
 import styles from "./LoginForm.module.css";
-import { useRouter } from "next/navigation";
-import { useCookies } from "react-cookie";
 import Image from "next/image";
 
 export default function LoginForm() {
   const [user_id, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const { mutate: postLogin, isSuccess } = useLoginMutation();
-  const [cookies, setCookie, removeCookie] = useCookies();
-  const router = useRouter();
+  const { mutate: postLogin } = useLoginMutation();
 
   const onLogin = (e: FormEvent) => {
     e.preventDefault();
     removeCookie("accessToken");
     postLogin({ user_id, password });
   };
-
-  useEffect(() => {
-    if (isSuccess && cookies.accessToken) {
-      router.push("/save/main");
-    }
-  }, [isSuccess, cookies.accessToken, router]);
 
   return (
     <div className="flex items-start justify-center bg-slate-100 h-screen overflow-y-auto">
