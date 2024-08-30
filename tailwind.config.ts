@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         "light-yellow": "#fffff3",
+        "kg-yellow": "#ffff86",
       },
       fontFamily: {
         skyBori: ["SkyBori", "sans-serif"],
