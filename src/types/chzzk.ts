@@ -16,7 +16,15 @@ export interface FollowerResponse {
 }
 
 export interface FetchFollowersParams {
-  nidAut: string;
-  nidSes: string;
-  userId: string;
+  NID_AUT: string;
+  NID_SES: string;
+  id: string;
+}
+
+export interface ChzzkResponse {
+  followers: string[] | null;
+  followings: string[] | null;
+  mutualFollows: string[] | null;
+  onlyFollowing: string[] | null;
+  onlyFollowers: string[] | null;
 }
