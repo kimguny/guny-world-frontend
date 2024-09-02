@@ -2,7 +2,8 @@ export default function Main() {
   return (
     <>
       <div className="dark:bg-gray-800 dark:text-white">
-        안녕하세요. 아직 개발중이기 때문에 오류가 있을 수 있습니다.
+        현재 네이버 API가 변경됨에 따라 기능에서 에러가 나오고 있습니다. 추후
+        업데이트 후 공지 남기겠습니다. ㅠ
       </div>
     </>
   );
