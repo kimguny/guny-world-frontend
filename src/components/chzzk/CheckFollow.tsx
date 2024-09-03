@@ -65,7 +65,7 @@ export default function CheckFollow() {
         </label>
         <button
           onClick={handleVerify}
-          className="px-4 py-2 bg-kg-yellow text-black rounded hover:bg-yellow-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
+          className="px-4 py-2 bg-kg-yellow text-black rounded hover:bg-yellow-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
         >
           검증 요청
         </button>
