@@ -97,14 +97,6 @@ export default function LoginForm() {
             <hr className="flex-grow border-t border-gray-300" />
           </div>
           <div className="flex justify-center space-x-4">
-            {/* <a href="https://accounts.google.com/signin" className="text-3xl">
-              <Image
-                src="/img/search.png"
-                alt="Google"
-                width={32}
-                height={32}
-              />
-            </a> */}
             <a
               // href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`}
               onClick={onNaverLogin}
@@ -117,9 +109,6 @@ export default function LoginForm() {
                 height={32}
               />
             </a>
-            {/* <a href="https://www.kakao.com/talk" className="text-3xl">
-              <Image src="" alt="Kakao" width={32} height={32} />
-            </a> */}
           </div>
         </div>
       </div>
