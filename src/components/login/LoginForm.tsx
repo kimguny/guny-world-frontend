@@ -82,15 +82,18 @@ export default function LoginForm() {
             <hr className="flex-grow border-t border-gray-300" />
           </div>
           <div className="flex justify-center space-x-4">
-            <a href="https://accounts.google.com/signin" className="text-3xl">
+            {/* <a href="https://accounts.google.com/signin" className="text-3xl">
               <Image
                 src="/img/search.png"
                 alt="Google"
                 width={32}
                 height={32}
               />
-            </a>
-            <a href="https://nid.naver.com/nidlogin.login" className="text-3xl">
+            </a> */}
+            <a
+              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/naver/callback&state=RANDOM_STATE_STRING"
+              className="text-3xl"
+            >
               <Image
                 src="/img/btnG_아이콘사각.png"
                 alt="Naver"
