@@ -91,7 +91,7 @@ export default function LoginForm() {
               />
             </a> */}
             <a
-              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/naver/callback&state=RANDOM_STATE_STRING"
+              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=RANDOM_STATE_STRING"
               className="text-3xl"
             >
               <Image
