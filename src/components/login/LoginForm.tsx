@@ -1,4 +1,5 @@
 "use client";
+
 import { getCookie, setCookie, removeCookie } from "@/utils/cookies";
 import useLoginMutation from "@/hooks/mutation/useLoginMutation";
 import React, { useEffect, useState, FormEvent } from "react";
@@ -23,6 +24,12 @@ export default function LoginForm() {
     e.preventDefault();
     removeCookie("accessToken");
     postLogin({ user_id, password });
+  };
+
+  const onNaverLogin = (e: FormEvent) => {
+    e.preventDefault();
+    removeCookie("accessToken");
+    window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`;
   };
 
   return (
@@ -99,7 +106,8 @@ export default function LoginForm() {
               />
             </a> */}
             <a
-              href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`}
+              // href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`}
+              onClick={onNaverLogin}
               className="text-3xl"
             >
               <Image
