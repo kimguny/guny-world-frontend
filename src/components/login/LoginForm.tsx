@@ -5,11 +5,19 @@ import React, { useEffect, useState, FormEvent } from "react";
 import Lanyard from "@/components/common/Lanyard";
 import styles from "./LoginForm.module.css";
 import Image from "next/image";
+import crypto from "crypto";
 
 export default function LoginForm() {
   const [user_id, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const { mutate: postLogin } = useLoginMutation();
+
+  const [state, setState] = useState("");
+
+  useEffect(() => {
+    const randomState = crypto.randomBytes(16).toString("hex");
+    setState(randomState);
+  }, []);
 
   const onLogin = (e: FormEvent) => {
     e.preventDefault();
@@ -91,7 +99,7 @@ export default function LoginForm() {
               />
             </a> */}
             <a
-              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=RANDOM_STATE_STRING"
+              href={`https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`}
               className="text-3xl"
             >
               <Image
