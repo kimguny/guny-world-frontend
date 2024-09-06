@@ -29,7 +29,7 @@ export default function LoginForm() {
   const onNaverLogin = (e: FormEvent) => {
     e.preventDefault();
     removeCookie("accessToken");
-    window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/api/naver/callback&state=${state}`;
+    window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=9XMqrNZOsBDy4Z_wq21i&redirect_uri=https://game.gunynote.com/naver/callback&state=${state}`;
   };
 
   return (
