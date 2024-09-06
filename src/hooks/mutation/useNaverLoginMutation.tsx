@@ -14,6 +14,8 @@ export default function useNaverLoginMutation() {
       setCookie("accessToken", data.accessToken, { path: "/" });
       localStorage.setItem("refreshToken", data.refreshToken);
 
+      setCookie("loginType", "naver", { path: "/" });
+
       queryClient.invalidateQueries({ queryKey: ["user"] });
 
       router.push("/save/main");

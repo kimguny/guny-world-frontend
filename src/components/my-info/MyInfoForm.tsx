@@ -1,54 +1,29 @@
 "use client";
-import { useState, useRef } from 'react';
-import styles from './MyInfoForm.module.css';
+
+import Tilt from "react-parallax-tilt";
+import Image from "next/image";
 
 export default function MyInfoForm() {
-    const [style, setStyle] = useState({ transform: '', filter: '' });
-    const [overlayStyle, setOverlayStyle] = useState({ backgroundPosition: '', filter: '' });
-    const containerRef = useRef<HTMLDivElement>(null);
-  
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateY = -1 / 5 * x + 20;
-        const rotateX = 4 / 30 * y - 20;
-  
-        setOverlayStyle({
-          backgroundPosition: `${x / 5 + y / 5}%`,
-          filter: `opacity(${x / 200}) brightness(1.2)`
-        });
-  
-        setStyle({
-          transform: `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-          filter: ''
-        });
-      }
-    };
-  
-    const handleMouseOut = () => {
-      setOverlayStyle({
-        backgroundPosition: '',
-        filter: 'opacity(0)'
-      });
-  
-      setStyle({
-        transform: 'perspective(350px) rotateY(0deg) rotateX(0deg)',
-        filter: ''
-      });
-    };
-  
-    return (
-      <div
-        className={styles.container}
-        onMouseMove={handleMouseMove}
-        onMouseOut={handleMouseOut}
-        ref={containerRef}
-        style={style}
-      >
-        <div className={styles.overlay} style={overlayStyle}></div>
-        <div className={styles.card}></div>
+  return (
+    <Tilt
+      className="w-80 h-96 mx-auto shadow-xl rounded-xl bg-gradient-to-r from-purple-500 to-blue-400"
+      perspective={1000}
+      glareEnable={true}
+      glareMaxOpacity={0.8}
+      scale={1.05}
+    >
+      <div className="flex flex-col items-center justify-center h-full p-5 text-center text-white">
+        <Image
+          src="/profile.jpg"
+          alt="Profile"
+          width={100}
+          height={100}
+          className="rounded-full mb-4"
+        />
+        <h2 className="text-2xl font-bold">홍길동</h2>
+        <p className="text-lg">honggildong@example.com</p>
+        <p className="text-sm mt-2">Role: Admin</p>
       </div>
-    );
+    </Tilt>
+  );
 }
