@@ -53,7 +53,7 @@ export default function Sidebar() {
         {sidebarItems.map((item) => (
           <li
             key={item.href}
-            className={`my-4 rounded-3xl relative overflow-hidden ${isActive(
+            className={`rounded-3xl relative overflow-hidden ${isActive(
               item.href,
             )} hover:bg-gradient-yellow-hover dark:hover:bg-gradient-dark-hover active:bg-gradient-yellow-active dark:active:bg-gradient-dark-active`}
           >
