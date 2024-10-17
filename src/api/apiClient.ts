@@ -35,8 +35,6 @@ const postReissue = memoize(
       const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
         data;
 
-      console.log("보냄");
-
       setCookie("accessToken", newAccessToken, { path: "/" });
       localStorage.setItem("refreshToken", newRefreshToken);
 
@@ -46,8 +44,6 @@ const postReissue = memoize(
       localStorage.removeItem("refreshToken");
 
       delete apiClient.defaults.headers.common.Authorization;
-      alert("로그인 정보가 존재하지 않습니다. 로그인 페이지로 이동합니다.");
-      window.location.href = "/login";
 
       return Promise.reject(error);
     }
