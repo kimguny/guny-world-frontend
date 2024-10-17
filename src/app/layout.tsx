@@ -1,9 +1,10 @@
-import QueryClientProvider from "@/provider/QueryClientProvider";
-import RecoilRootProvider from "@/provider/RecoilRootProvider";
-import { DarkModeProvider } from "@/context/DarkModeContext";
+import ClientProviders from "@/provider/ClientProviders";
 import React from "react";
 
 import "./globals.css";
+
+import "ag-grid-community/styles/ag-theme-alpine.css";
+import "ag-grid-community/styles/ag-grid.css";
 
 export const metadata = {
   title: "Guny World",
@@ -20,13 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <RecoilRootProvider>
-        <QueryClientProvider>
-          <DarkModeProvider>
-            <body>{children}</body>
-          </DarkModeProvider>
-        </QueryClientProvider>
-      </RecoilRootProvider>
+      <body>
+        <ClientProviders>{children}</ClientProviders>
+      </body>
     </html>
   );
 }
