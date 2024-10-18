@@ -1,10 +1,11 @@
 import ClientProviders from "@/provider/ClientProviders";
 import React from "react";
 
-import "./globals.css";
+import "ag-grid-community/styles/ag-grid.css";
 
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import "ag-grid-community/styles/ag-grid.css";
+
+import "./globals.css";
 
 export const metadata = {
   title: "Guny World",
