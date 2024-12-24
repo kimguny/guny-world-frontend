@@ -16,6 +16,8 @@ export default function useLoginMutation() {
 
       setCookie("loginType", "normal", { path: "/" });
 
+      alert(data.message);
+
       queryClient.invalidateQueries({ queryKey: ["user"] });
 
       router.push("/save/main");

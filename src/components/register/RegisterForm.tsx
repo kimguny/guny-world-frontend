@@ -16,7 +16,7 @@ export default function RegisterForm() {
   const onRegister = (e: FormEvent) => {
     e.preventDefault();
     if (!isPasswordMatch) {
-      alert("Passwords do not match");
+      alert("비밀번호가 일치하지 않습니다.");
       return;
     }
     postRegister({ user_id, password, nickname });
