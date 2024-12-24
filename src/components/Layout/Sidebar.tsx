@@ -33,7 +33,6 @@ export default function Sidebar() {
   const sidebarItems = [
     { href: "/save/main", label: "Main" },
     { href: "/save/chzzk", label: "Chzzk" },
-    { href: "/404", label: "404" },
   ];
 
   return (
