@@ -17,7 +17,10 @@ export default function useRegisterMutation() {
       router.push("/login");
     },
     onError: (error: AxiosError) => {
-      alert(error.message);
+      const errorMessage =
+        (error.response?.data as { error?: string })?.error ||
+        "알 수 없는 에러가 발생했습니다.";
+      alert(errorMessage);
     },
   });
 

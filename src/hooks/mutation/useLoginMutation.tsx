@@ -23,7 +23,8 @@ export default function useLoginMutation() {
       router.push("/save/main");
     },
     onError: (error: AxiosError) => {
-      alert(error.message);
+      const errorMessage = (error.response?.data as { error: string }).error;
+      alert(errorMessage);
     },
   });
   return mutate;
