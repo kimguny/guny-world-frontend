@@ -1,9 +1,12 @@
 "use client";
 
+import { useDarkMode } from "@/context/DarkModeContext";
 import { AgGridReact } from "ag-grid-react";
 import React from "react";
 
 export default function Main() {
+  const { darkMode } = useDarkMode();
+
   const rowData = [
     {
       message: "🐛 에러 메세지 표시 수정",
@@ -24,8 +27,14 @@ export default function Main() {
 
   return (
     <>
-      <div className="dark:bg-gray-800 dark:text-white w-full h-full">
-        <div className="ag-theme-alpine w-full h-full">
+      <div
+        className={`${darkMode ? "dark" : ""} bg-gray-800 text-white w-full h-full`}
+      >
+        <div
+          className={`${
+            darkMode ? "ag-theme-alpine-dark" : "ag-theme-alpine"
+          } w-full h-full`}
+        >
           <AgGridReact
             rowData={rowData}
             columnDefs={[
