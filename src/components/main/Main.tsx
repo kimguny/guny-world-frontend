@@ -6,6 +6,11 @@ import React from "react";
 export default function Main() {
   const rowData = [
     {
+      message: "🐛 에러 메세지 표시 수정",
+      author: "kimguny",
+      date: "2024-12-27T10:59:23Z",
+    },
+    {
       message: "🎨 사이드바 간격 조정",
       author: "kimguny",
       date: "2024-10-17T01:21:34Z",
