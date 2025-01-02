@@ -10,5 +10,5 @@
 }
 
 .slide-down {
-  animation: slideDownDiagonal 1s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
 }
