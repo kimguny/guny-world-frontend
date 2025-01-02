@@ -33,13 +33,6 @@ export default function Main() {
             darkMode ? "ag-theme-alpine-dark" : "ag-theme-alpine"
           } w-full h-full`}
         >
-          <div className="bg-red-500 text-white w-full p-4 rounded-lg mb-4">
-            <p>
-              현재 개발 중이라 오류가 있을 경우 관리자에게 문의해주세요.
-              <br />
-              <span className="font-semibold">Discode ID:</span> kimgeon9445
-            </p>
-          </div>
           <AgGridReact
             rowData={rowData}
             columnDefs={[
