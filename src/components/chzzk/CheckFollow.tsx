@@ -1,5 +1,6 @@
 "use client";
 import useChzzkMutation from "@/hooks/mutation/useChzzkMutation";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FetchFollowersParams } from "@/types/chzzk";
 import { useState } from "react";
 
@@ -14,6 +15,8 @@ export default function CheckFollow() {
   const [onlyFollowing, setOnlyFollowing] = useState<string[] | null>(null);
   const [onlyFollowers, setOnlyFollowers] = useState<string[] | null>(null);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const { mutate: postChzzk } = useChzzkMutation((data) => {
     setFollowers(data.followers || []);
     setFollowing(data.followings || []);
@@ -23,13 +26,21 @@ export default function CheckFollow() {
   });
 
   const handleVerify = () => {
+    setIsLoading(true);
     const requestBody: FetchFollowersParams = {
       NID_AUT: nidAut,
       NID_SES: nidSes,
       id: userId,
     };
 
-    postChzzk(requestBody);
+    postChzzk(requestBody, {
+      onSuccess: () => {
+        setIsLoading(false);
+      },
+      onError: () => {
+        setIsLoading(false);
+      },
+    });
   };
 
   return (
@@ -65,9 +76,14 @@ export default function CheckFollow() {
         </label>
         <button
           onClick={handleVerify}
-          className="px-4 py-2 bg-kg-yellow text-black rounded hover:bg-yellow-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white"
+          className="flex justify-center items-center gap-2 px-4 py-2 bg-kg-yellow text-black rounded hover:bg-yellow-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white disabled:opacity-50"
+          disabled={isLoading}
         >
-          검증 요청
+          {isLoading ? (
+            <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin" />
+          ) : (
+            "검증 요청"
+          )}
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
